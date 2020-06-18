@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Constants.hpp"
+
 namespace bb {
 	struct bin_proxy {
 	private:
@@ -15,18 +17,19 @@ namespace bb {
 				return proxy.os << data;
 			}
 
-			// Count the number of bytes necessary to output.
+			// Check if the size of the data fits in one Nibble.
+			// Count the number of nibbles necessary to output.
 			// This is used for making sure we don't display
 			// more bytes than are used and for formatting.
-			size_t bytesInUse = 0;
-			for (size_t bytes = 0; bytes < sizeof(unsigned); bytes++) {
-				if (((data >> bytes * CHAR_BIT) & 0xff) != 0) {
-					bytesInUse++;
+			size_t nibblesInUse = 0;
+			for (size_t nibbles = 0; nibbles < sizeof(unsigned) * 2; nibbles++) {
+				if (((data >> nibbles * NIBBLE_MAX) & 0xf) != 0) {
+					nibblesInUse++;
 				}
 			}
 
-			for (size_t bit = bytesInUse * CHAR_BIT; bit > 0; bit--) {
-				if (bit % CHAR_BIT == 0 && bit != bytesInUse * CHAR_BIT) {
+			for (size_t bit = nibblesInUse * NIBBLE_MAX; bit > 0; bit--) {
+				if (bit % CHAR_BIT == 0 && bit != nibblesInUse * NIBBLE_MAX) {
 					proxy.os << ' ';
 				}
 				proxy.os << ((data >> (bit - 1)) & 1);
