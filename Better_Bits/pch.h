@@ -9,5 +9,8 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include <ostream>		// for ostream
+#include <type_traits>  // for is_signed
+#include <climits>		// for CHAR_BIT
 
 #endif //PCH_H
