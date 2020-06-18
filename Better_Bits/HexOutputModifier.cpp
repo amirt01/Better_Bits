@@ -9,6 +9,6 @@ namespace bb {
 
 	hex_proxy operator<<(std::ostream& os, hex_creator)
 	{
-		return hex_proxy(os);
+		return (os);
 	}
 }

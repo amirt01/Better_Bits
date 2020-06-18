@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Counters.hpp" />
     <ClInclude Include="BinaryOutputModifier.hpp" />
     <ClInclude Include="Constants.hpp" />
     <ClInclude Include="framework.h" />
@@ -159,7 +160,6 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BetterBits.cpp" />
     <ClCompile Include="BinaryOutputModifier.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="HexOutputModifier.cpp" />
